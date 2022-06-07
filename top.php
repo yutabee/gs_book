@@ -19,7 +19,7 @@ check_session_id();
   <div class="container">
     <P><span>Hello!</span><?= "{$_SESSION['user_name']}" ?>さん!</P>
     <a href="login/user_logout.php">Logout</a>
-    <a href="user_login_read.php">List</a>
+    <a href="user_list.php">List</a>
 
   </div>
   
