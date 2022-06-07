@@ -79,6 +79,14 @@
 
 
                   <div class="form-outline mb-4">
+                    <select name="user_class" id="user_class" class="form-control form-control-lg">
+                      <option>選択してください</option>
+                    </select>
+                    <label class="form-label" for="user_class">class</label>
+                  </div>
+
+
+                  <div class="form-outline mb-4">
                     <textarea id="user_history" class="form-control form-control-lg" name="user_history"></textarea>
                     <label class="form-label" for="user_history">History</label>
                   </div>
