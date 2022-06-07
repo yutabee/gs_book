@@ -44,7 +44,8 @@ if (!$val) {
   $_SESSION['user_class'] = $val['user_class'];
   $_SESSION['user_name'] = $val['user_name'];
   $_SESSION['password'] = $val['password'];
-  // var_dump($_SESSION['user_class']);
+  $_SESSION['user_image'] = $val['user_image'];
+  // var_dump($_SESSION['user_image']);
   // exit();
   header("Location:../top.php");
   exit();
