@@ -4,10 +4,10 @@ session_start();
 include("../functions.php");
 check_session_id();
 
-echo '<pre>';
-var_dump($_SESSION);
-echo '<pre>';
-exit();
+// echo '<pre>';
+// var_dump($_SESSION);
+// echo '<pre>';
+// exit();
 
 //入力値のチェック
 if (
@@ -21,6 +21,8 @@ if (
 
 $image_title = $_POST['image_title'];
 $image_caption = $_POST['image_caption'];
+$user_class = $_SESSION['user_class'];
+$user_id = $_SESSION['id'];
 
 // echo '<pre>';
 // var_dump($_POST);
@@ -51,7 +53,7 @@ if (isset($_FILES['upfile']) && $_FILES['upfile']['error'] == 0) {
 }
 
 $pdo = connect_to_db();
-$sql = 'INSERT INTO Gs_gallery_table(id, user_id, user_class, image_title, image_caption, image_path, created_at) VALUES(NULL, :user_id, :user_class :image_title, :image_caption , :image_path, now())';
+$sql = 'INSERT INTO image_table(id, user_id, user_class, image_title, image_caption, image_path, created_at) VALUES(NULL, :user_id, :user_class, :image_title, :image_caption , :image_path, now())';
 
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
@@ -59,6 +61,11 @@ $stmt->bindValue(':user_class', $user_class, PDO::PARAM_STR);
 $stmt->bindValue(':image_title', $image_title, PDO::PARAM_STR);
 $stmt->bindValue(':image_caption', $image_caption, PDO::PARAM_STR);
 $stmt->bindValue(':image_path', $save_path, PDO::PARAM_STR);
+
+// echo '<pre>';
+// var_dump($save_path);
+// echo '<pre>';
+// exit();
 
 try {
   $status = $stmt->execute();
