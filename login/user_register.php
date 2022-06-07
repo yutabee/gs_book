@@ -80,7 +80,25 @@
 
                   <div class="form-outline mb-4">
                     <select name="user_class" id="user_class" class="form-control form-control-lg">
-                      <option>選択してください</option>
+                      <option value="NONE">選択してください</option>
+                      <option value="LAB01">LAB01</option>
+                      <option value="LAB02">LAB02</option>
+                      <option value="LAB03">LAB03</option>
+                      <option value="LAB04">LAB04</option>
+                      <option value="LAB05">LAB05</option>
+                      <option value="LAB06">LAB06</option>
+                      <option value="LAB07">LAB07</option>
+                      <option value="DEV01">DEV01</option>
+                      <option value="DEV02">DEV02</option>
+                      <option value="DEV03">DEV03</option>
+                      <option value="DEV04">DEV04</option>
+                      <option value="DEV05">DEV05</option>
+                      <option value="DEV06">DEV06</option>
+                      <option value="DEV07">DEV07</option>
+                      <option value="DEV08">DEV08</option>
+                      <option value="DEV09">DEV09</option>
+                      <option value="DEV10">DEV10</option>
+                      <option value="DEV11">DEV11</option>
                     </select>
                     <label class="form-label" for="user_class">class</label>
                   </div>
