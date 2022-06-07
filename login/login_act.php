@@ -42,6 +42,6 @@ if (!$val) {
   $_SESSION['is_admin'] = $val['is_admin'];
   $_SESSION['user_name'] = $val['user_name'];
   $_SESSION['password'] = $val['password'];
-  header("Location:user_register.php");
+  header("Location:../top.php");
   exit();
 }

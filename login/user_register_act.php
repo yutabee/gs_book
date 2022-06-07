@@ -30,7 +30,7 @@ if (isset($_FILES['user_image']) && $_FILES['user_image']['error'] == 0) {
   // 送信が正常に行われたときの処理
   $uploaded_file_name = $_FILES['user_image']['name'];
   $temp_path  = $_FILES['user_image']['tmp_name'];
-  $directory_path = 'user_image/';
+  $directory_path = '../user_image/';
 
   $extension = pathinfo($uploaded_file_name, PATHINFO_EXTENSION);
   $unique_name = date('YmdHis') . md5(session_id()) . '.' . $extension;
