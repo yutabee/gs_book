@@ -12,6 +12,7 @@ if (
   !isset($_POST['user_name']) || $_POST['user_name'] == '' ||
   !isset($_POST['email']) || $_POST['email'] == '' ||
   !isset($_POST['password']) || $_POST['password'] == '' ||
+  !isset($_POST['user_class']) || $_POST['user_class'] == '' ||
   !isset($_POST['user_history']) || $_POST['user_history'] == '' ||
   !isset($_POST['user_twitter']) || $_POST['user_twitter'] == '' ||
   !isset($_POST['user_github']) || $_POST['user_github'] == ''
@@ -59,6 +60,7 @@ if (isset($_FILES['user_image']) && $_FILES['user_image']['error'] == 0) {
 $user_name = $_POST['user_name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
+$user_class = $_POST['user_class'];
 $user_history = $_POST['user_history'];
 $user_twitter = $_POST['user_twitter'];
 $user_github = $_POST['user_github'];
@@ -68,7 +70,7 @@ $user_github = $_POST['user_github'];
 $pdo = connect_to_db();
 
 // sql作成＆実行
-$sql = 'INSERT INTO user_table (id, user_name, email, password, is_admin, is_deleted, user_image, user_history, user_twitter, user_github, created_at, updated_at) VALUES (NULL, :user_name, :email, :password, 0, 0, :user_image, :user_history, :user_twitter, :user_github, now(), now())';
+$sql = 'INSERT INTO user_table (id, user_name, email, password, is_admin, is_deleted, user_image, user_class, user_history, user_twitter, user_github, created_at, updated_at) VALUES (NULL, :user_name, :email, :password, 0, 0, :user_image, :user_class, :user_history, :user_twitter, :user_github, now(), now())';
 
 $stmt = $pdo->prepare($sql);
 
@@ -80,6 +82,7 @@ $stmt->bindValue(':user_name', $user_name, PDO::PARAM_STR);
 $stmt->bindValue(':email', $email, PDO::PARAM_STR);
 $stmt->bindValue(':password', $password, PDO::PARAM_STR);
 $stmt->bindValue(':user_image', $save_path, PDO::PARAM_STR);
+$stmt->bindValue(':user_class', $user_class, PDO::PARAM_STR);
 $stmt->bindValue(':user_history', $user_history, PDO::PARAM_STR);
 $stmt->bindValue(':user_twitter', $user_twitter, PDO::PARAM_STR);
 $stmt->bindValue(':user_github', $user_github, PDO::PARAM_STR);

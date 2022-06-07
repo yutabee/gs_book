@@ -40,8 +40,12 @@ if (!$val) {
   $_SESSION = array();
   $_SESSION['session_id'] = session_id();
   $_SESSION['is_admin'] = $val['is_admin'];
+  $_SESSION['id'] = $val['id'];
+  $_SESSION['user_class'] = $val['user_class'];
   $_SESSION['user_name'] = $val['user_name'];
   $_SESSION['password'] = $val['password'];
+  // var_dump($_SESSION['user_class']);
+  // exit();
   header("Location:../top.php");
   exit();
 }
