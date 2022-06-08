@@ -29,15 +29,18 @@ $outText = "";
 foreach ($result as $record) {
  $outText .= "
     <div class='usercard'>
-      <div class='userimage'>
-        <img src='{$record['user_image']}'>
-        <p>{$record['user_name']}</p>
-      </div>     
+        <div class='userimage'>
+          <img src='{$record['user_image']}'>
+          <div class='user-content'>
+            <p>{$record['user_name']}</p>
+            <p>{$record['user_history']}</p>
+            <p><i class='fa-brands fa-twitter'></i>{$record['user_twitter']}</p>
+            <p><i class='fa-brands fa-github'></i>{$record['user_github']}</p>
+          </div>
+        </div>
     </div>
  ";
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +49,7 @@ foreach ($result as $record) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/ab4f4e9293.js" crossorigin="anonymous"></script>
   <title>Document</title>
   <style>
     body {
@@ -67,20 +71,27 @@ foreach ($result as $record) {
     }
 
     .usercard {
-      width: 15%;
+      width: 30%;
       display: flex;
       justify-content: center;
       display: inline-block;
-      margin: 60px 0 0 60px;
+      /* margin: 60px 0 0 60px; */
+      padding: 20px 30px;
+      margin-left: 200px;
+      margin-top: 60px;
     }
 
-    .userimage {
-      
-      text-align: center;
+    .userimage {    
       background-color: white;
-      padding: 20px 20px;
+      text-align: center;
+      /* padding: 40px 60px; */
       border-radius: 20px;
       box-shadow: inset black -2px -2px 4px 1px;
+    }
+
+    .user-content {
+      
+      padding: 40px;
     }
 
     img {
@@ -88,6 +99,7 @@ foreach ($result as $record) {
       border-radius: 50%;
       text-align: center;
       margin: 0 auto;
+      padding-top: 20px;
     }
 
     p {
@@ -103,9 +115,16 @@ foreach ($result as $record) {
 
 
     <section id="content">
+
       <?= $outText ?>
       
     </section>
+
+
+    <!-- <button id="modalOpen" class="button">Click Me</button> -->
+    
+  <script src="user_list.js"></script>
+
   </div>
 </body>
 </html>
