@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/user.css">
-  <title>Document</title>
+  <title>TOP</title>
   <style>
     .outbox {
       margin: 10px;
@@ -83,8 +83,8 @@
     <div class="container">
       <P><span>Hello!</span><?= "{$_SESSION['user_name']}" ?>さん!</P>
       <a href="login/user_logout.php">Logout</a>
-      <a href="user_login_read.php">List</a>
-      <div class='photo_submit_button'><a href="image_register_form/image_register.php">写真を投稿する</a></div>
+      <a href="login/user_list.php">UserList</a>
+      <div class='photo_submit_button'><a href="image_register_form/image_register.php">投稿する</a></div>
     </div>
     <div id="ClassBox">
       <h2>LAB</h2>
