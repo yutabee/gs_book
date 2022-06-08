@@ -84,9 +84,8 @@
       <P><span>Hello!</span><?= "{$_SESSION['user_name']}" ?>さん!</P>
       <a href="login/user_logout.php">Logout</a>
       <a href="user_login_read.php">List</a>
+      <div class='photo_submit_button'><a href="image_register_form/image_register.php">写真を投稿する</a></div>
     </div>
-
-
     <div id="ClassBox">
       <h2>LAB</h2>
       <div class="class_box_container">
@@ -98,6 +97,7 @@
       </div>
     </div>
   </div>
+
   <script>
     let LabOutText = "";
     const LabClassArray = [...Array(16).keys()].map((x) => {
@@ -119,8 +119,6 @@
     const DevClassList = document.getElementById('DevClassList');
     DevClassList.innerHTML = DevOutText;
   </script>
-
-
 </body>
 
 </html>
