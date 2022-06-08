@@ -28,14 +28,11 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $outText = "";
 foreach ($result as $record) {
  $outText .= "
-  <div class='usercard'>
+    <div class='usercard'>
       <div class='userimage'>
         <img src='{$record['user_image']}'>
-      </div>
-      <p>{$record['user_name']}</p>
-      <p></p>
-      <p></p>
-      <p></p>
+        <p>{$record['user_name']}</p>
+      </div>     
     </div>
  ";
 }
@@ -51,16 +48,52 @@ foreach ($result as $record) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    li {
-      list-style: none;
-    }
-    #content .content-list ul {
-      display: flex;
-      
+    body {
+      background: #84fab0;
+
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
     }
 
-    #content .content-list li {
-      margin: 0 40px;    
+    .container {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,
+          minmax(200px, 1fr));
+      grid-gap: 10px;
+    }
+
+    .usercard {
+      width: 15%;
+      display: flex;
+      justify-content: center;
+      display: inline-block;
+      margin: 60px 0 0 60px;
+    }
+
+    .userimage {
+      
+      text-align: center;
+      background-color: white;
+      padding: 20px 20px;
+      border-radius: 20px;
+      box-shadow: inset black -2px -2px 4px 1px;
+    }
+
+    img {
+      height: 200px;
+      border-radius: 50%;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    p {
+      font-size: 20px;
+      text-align: center;
+      font-weight: bold;
     }
     
   </style>
