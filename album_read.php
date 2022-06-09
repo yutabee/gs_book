@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/header.css">
+    <script src="https://kit.fontawesome.com/ab4f4e9293.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 
@@ -12,10 +14,8 @@
     <style>
         body {
             background: #84fab0;
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+            background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+            background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
         }
 
         .outPutArea {
@@ -35,6 +35,10 @@
 
         .image_card>img {
             border-radius: 10px;
+        }
+
+        .main_container {
+            margin-top: 100px;
         }
     </style>
     <?php
@@ -69,8 +73,27 @@
 
     ?>
 
-    <h1><?= $className ?> BOOK</h1>
-    <div id="outPutArea" class="outPutArea"></div>
+    <header>
+        <h1>
+            <a href="top.php">G'sBOOK</a>
+        </h1>
+        <nav class="pc-nav">
+            <ul>
+                <li> <a href="top.php">TOP</a></li>
+                <li> <a href="login/user_logout.php">Logout</a></li>
+                <li><a href="login/user_list.php">UserList</a></li>
+                <li><a href="image_register_form/image_register.php" class="fa-solid fa-camera-retro"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="main_container">
+            <h1 style="color:white;"><?= $className ?></h1>
+            <div id="outPutArea" class="outPutArea"></div>
+        </div>
+    </main>
+
     <script>
         const json_results = <?= json_encode($result) ?>;
         console.log(json_results);
@@ -79,7 +102,9 @@
             console.log(x.image_path);
             let ret = x.image_path.replace('../', '');
             outText += `<div class="image_card">
+                            <a href="image_expansion">
                             <img src="${ret}" style="width:250px;height:200px;">
+                             </a>
                             <div class="image_caption_box">
                                 <p>title: ${x.image_title}</p>
                                 <p>caption: ${x.image_caption}</p>
@@ -90,7 +115,6 @@
         const outPutArea = document.getElementById('outPutArea');
         outPutArea.innerHTML = outText;
     </script>
-
 </body>
 
 </html>
