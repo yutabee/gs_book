@@ -2,7 +2,8 @@
 include('../functions.php');
 session_start();
 // データ受け取り
-// var_dump($_POST);
+
+// var_dump($_SESSION);
 // exit();
 
 
@@ -32,6 +33,12 @@ try {
 
 // ユーザ有無で条件分岐
 $val = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// echo '<pre>';
+// var_dump($val);
+// echo '<pre>';
+// exit();
+
 if (!$val) {
   echo "<p>ログイン情報に誤りがあります</p>";
   echo "<a href=login_input.php>ログイン</a>";
@@ -45,6 +52,9 @@ if (!$val) {
   $_SESSION['user_name'] = $val['user_name'];
   $_SESSION['password'] = $val['password'];
   $_SESSION['user_image'] = $val['user_image'];
+  $_SESSION['user_field'] = $val['user_field'];
+  $_SESSION['user_history'] = $val['user_history'];
+  $_SESSION['user_future'] = $val['user_future'];
   // var_dump($_SESSION['user_image']);
   // exit();
   header("Location:../top.php");

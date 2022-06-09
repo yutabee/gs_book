@@ -5,6 +5,12 @@ check_session_id();
 
 // var_dump($_SESSION);
 // exit();
+$user_id = $_SESSION['id'];
+
+// echo '<pre>';
+// var_dump($_SESSION);
+// echo '<pre>';
+// exit();
 
 $pdo = connect_to_db();
 
@@ -19,32 +25,50 @@ try {
   exit();
 }
 
-
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// var_dump($result);
+// echo '<pre>';
+// var_dump($user_id);
+// echo '<pre>';
 // exit();
 
 
 $outText = "";
 foreach ($result as $record) {
- $outText .= "
+  if ($user_id == $record['id']) {
+    $EditButton = "<a href='user_edit.php' class='fa-solid fa-pen-to-square'></a>";
+  } else {
+    $EditButton = '';
+  }
+
+  // echo '<pre>';
+  // var_dump($record['id']);
+  // echo '<pre>';
+  // exit();
+
+  $outText .= "
     <div class='usercard'>
         <div class='userimage'>
           <img src='{$record['user_image']}'>
           <div class='user-content'>
-            <p>{$record['user_name']}</p>
-            <p>{$record['user_history']}</p>
-            <p><i class='fa-brands fa-twitter'></i>{$record['user_twitter']}</p>
-            <p><i class='fa-brands fa-github'></i>{$record['user_github']}</p>
+  
+            <p>{$record['user_name']}<span> {$EditButton}</span></p>
+            <p class='history'>{$record['user_history']}</p>
+            <p class='user_field'>{$record['user_field']}</p>
+            <p class='user_future'>{$record['user_future']}</p>
+            <a class='fa-brands fa-twitter' href='{$record['user_twitter']}'></a>
+            <a class='fa-brands fa-github' href='{$record['user_github']}'></a>
+
           </div>
         </div>
     </div>
+    
  ";
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -54,11 +78,7 @@ foreach ($result as $record) {
   <style>
     body {
       background: #84fab0;
-
-      /* Chrome 10-25, Safari 5.1-6 */
       background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
-
-      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
     }
 
@@ -75,22 +95,19 @@ foreach ($result as $record) {
       display: flex;
       justify-content: center;
       display: inline-block;
-      /* margin: 60px 0 0 60px; */
       padding: 20px 30px;
       margin-left: 200px;
       margin-top: 60px;
     }
 
-    .userimage {    
+    .userimage {
       background-color: white;
       text-align: center;
-      /* padding: 40px 60px; */
       border-radius: 20px;
       box-shadow: inset black -2px -2px 4px 1px;
     }
 
     .user-content {
-      
       padding: 40px;
     }
 
@@ -107,9 +124,30 @@ foreach ($result as $record) {
       text-align: center;
       font-weight: bold;
     }
-    
+
+    a {
+      font-size: 20px;
+      color: black;
+      padding-left: 10px;
+    }
+
+    a:hover {
+      color: lightblue;
+    }
+
+    .history {
+      font-weight: normal;
+      word-wrap: break-word;
+    }
+
+    .fa-brands {
+      padding: 20px;
+      font-size: 30px;
+      color: black;
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
 
@@ -117,14 +155,15 @@ foreach ($result as $record) {
     <section id="content">
 
       <?= $outText ?>
-      
+
     </section>
 
 
     <!-- <button id="modalOpen" class="button">Click Me</button> -->
-    
-  <script src="user_list.js"></script>
+
+    <script src="user_list.js"></script>
 
   </div>
 </body>
+
 </html>
