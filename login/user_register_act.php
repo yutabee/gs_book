@@ -70,7 +70,7 @@ $user_github = $_POST['user_github'];
 $pdo = connect_to_db();
 
 // sql作成＆実行
-$sql = 'INSERT INTO user_table (id, user_name, email, password, is_admin, is_deleted, user_image, user_class, user_history, user_twitter, user_github, created_at, updated_at) VALUES (NULL, :user_name, :email, :password, 0, 0, :user_image, :user_class, :user_history, :user_twitter, :user_github, now(), now())';
+$sql = 'INSERT INTO user_table (id, user_name, email, password, is_admin, is_deleted, user_image, user_class, user_field, user_history, user_future, user_twitter, user_github, created_at, updated_at) VALUES (NULL, :user_name, :email, :password, 0, 0, :user_image, :user_class, null, :user_history, null, :user_twitter, :user_github, now(), now())';
 
 $stmt = $pdo->prepare($sql);
 
